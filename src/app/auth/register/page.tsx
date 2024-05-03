@@ -6,9 +6,9 @@ function RegisterPage() {
   const {
     register,
     handleSubmit,
-    formState,
+    formState: { errors }
   } = useForm();
-  const errors = formState.errors as any;
+  const errs = errors as any;
   const router = useRouter();
 
   const onSubmit = handleSubmit(async (data) => {
@@ -44,7 +44,7 @@ function RegisterPage() {
       placeholder="Your Name"
     />
     {errors.nombre && (
-      <span className="text-red-500 text-xs">{errors.nombre.message || "Nombre is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.nombre.message) || "Nombre is required"}</span>
     )}
 
     <label htmlFor="apellido" className="text-zinc-800 mb-2 block text-sm">
@@ -57,7 +57,7 @@ function RegisterPage() {
       placeholder="Your Last Name"
     />
     {errors.apellido && (
-      <span className="text-red-500 text-xs">{errors.apellido.message || "Apellido is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.apellido.message) || "Apellido is required"}</span>
     )}
 
     <label htmlFor="tipoDocumento" className="text-zinc-800 mb-2 block text-sm">
@@ -73,7 +73,7 @@ function RegisterPage() {
       <option value="TI">TI</option>
     </select>
     {errors.tipoDocumento && (
-      <span className="text-red-500 text-xs">{errors.tipoDocumento.message || "Tipo de Documento is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.tipoDocumento.message) || "Tipo de Documento is required"}</span>
     )}
 
     <label htmlFor="numeroDocumento" className="text-zinc-800 mb-2 block text-sm">
@@ -86,7 +86,7 @@ function RegisterPage() {
       placeholder="Your Document Number"
     />
     {errors.numeroDocumento && (
-      <span className="text-red-500 text-xs">{errors.numeroDocumento.message || "Número de Documento is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.numeroDocumento.message) || "Número de Documento is required"}</span>
     )}
 
     <label htmlFor="telefono" className="text-zinc-800 mb-2 block text-sm">
@@ -99,7 +99,7 @@ function RegisterPage() {
       placeholder="Your Phone Number"
     />
     {errors.telefono && (
-      <span className="text-red-500 text-xs">{errors.telefono.message || "Teléfono is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.telefono.message) || "Teléfono is required"}</span>
     )}
 
     <label htmlFor="direccion" className="text-zinc-800 mb-2 block text-sm">
@@ -112,7 +112,7 @@ function RegisterPage() {
       placeholder="Your Address"
     />
     {errors.direccion && (
-      <span className="text-red-500 text-xs">{errors.direccion.message || "Dirección is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.direccion.message) || "Dirección is required"}</span>
     )}
 
     <label htmlFor="barrio" className="text-zinc-800 mb-2 block text-sm">
@@ -125,7 +125,7 @@ function RegisterPage() {
       placeholder="Your Neighborhood"
     />
     {errors.barrio && (
-      <span className="text-red-500 text-xs">{errors.barrio.message || "Barrio is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.barrio.message) || "Barrio is required"}</span>
     )}
 
     <label htmlFor="fechaNacimiento" className="text-zinc-800 mb-2 block text-sm">
@@ -137,7 +137,7 @@ function RegisterPage() {
       className="p-3 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
     />
     {errors.fechaNacimiento && (
-      <span className="text-red-500 text-xs">{errors.fechaNacimiento.message || "Fecha de Nacimiento is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.fechaNacimiento.message) || "Fecha de Nacimiento is required"}</span>
     )}
     <label htmlFor="usuarioCampusVirtual" className="text-zinc-800 mb-2 block text-sm">
       Usuario Campus Virtual:
@@ -149,7 +149,7 @@ function RegisterPage() {
       placeholder="Your Campus Virtual Username"
     />
     {errors.usuarioCampusVirtual && (
-      <span className="text-red-500 text-xs">{errors.usuarioCampusVirtual.message || "Usuario Campus Virtual is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.usuarioCampusVirtual.message) || "Usuario Campus Virtual is required"}</span>
     )}
 
     <label htmlFor="claveCampusVirtual" className="text-zinc-800 mb-2 block text-sm">
@@ -162,7 +162,7 @@ function RegisterPage() {
       placeholder="********"
     />
     {errors.claveCampusVirtual && (
-      <span className="text-red-500 text-xs">{errors.claveCampusVirtual.message || "Clave Campus Virtual is required"}</span>
+      <span className="text-red-500 text-xs">{String(errors.claveCampusVirtual.message) || "Clave Campus Virtual is required"}</span>
     )}
     <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
       Register
