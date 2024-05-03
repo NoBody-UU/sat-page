@@ -1,35 +1,37 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import db from '../../../lib/db';
-import bcrypt from 'bcrypt';
+import UserSchema from "@/app/lib/schemas/User.schema";
+import clientPromise from "@/app/lib/db";
+
+clientPromise
 
 export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        usuario: { label: "Usuario", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password", placeholder: "*****" },
+        usuario: { label: "Usuario", type: "text", placeholder: "Usuario" },
+        password: { label: "Contraseña", type: "password" },
       },
       async authorize(credentials, _req) {
         console.log(credentials);
-        if (!(credentials?.usuario && credentials.password)) throw new Error('Missing credentials')
-        const database = (await db).db("sat");
 
-        const userFound = await database.collection('users').findOne({ email: credentials!.usuario })
+        if (!(credentials?.usuario && credentials.password)) throw new Error('Una o más credenciales no fueron enviadas');
+        console.log(await UserSchema.find())
+        const userFound = await UserSchema.findOne({ usuarioCampusVirtual: credentials.usuario }).catch(() => new Error('Error al buscar el usuario'))
 
         if (!userFound) throw new Error('Las credenciales no coinciden con un usuario registrado')
 
         console.log(userFound)
 
-        const matchPassword = await bcrypt.compare(credentials!.password, userFound.password)
+        const matchPassword = credentials.password === userFound.claveCampusVirtual;
 
-        if (!matchPassword) throw new Error('Wrong password')
+        if (!matchPassword) throw new Error('Las credenciales no coinciden con un usuario registrado')
 
         return {
             id: userFound.id,
-            name: userFound.name,
-            usuariio: userFound.usuario,
+            email: userFound.email,
+            usuario: userFound.usuarioCampusVirtual,
         }
       },
     }),

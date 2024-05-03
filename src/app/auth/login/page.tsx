@@ -1,8 +1,8 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
-import {useRouter} from 'next/navigation'
-import {useState} from 'react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 function LoginPage() {
   const {
@@ -14,7 +14,6 @@ function LoginPage() {
   const [error, setError] = useState(null)
   
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
 
     const res = await signIn("credentials", {
       usuario: data.usuario,
@@ -32,16 +31,16 @@ function LoginPage() {
   });
 
   return (
-    <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
+    <div className="h-[calc(100vh-7rem)] flex justify-center items-center login-container">
       <form onSubmit={onSubmit} className="w-1/4">
 
         {error && (
           <p className="bg-red-500 text-lg text-white p-3 rounded mb-2">{error}</p>
         )}
 
-        <h1 className="text-slate-200 font-bold text-4xl mb-4">Inicio Session</h1>
+        <h1 className="font-bold text-4xl mb-4 Inicio Session ">Inicio Session</h1>
 
-        <label htmlFor="usuario" className="text-slate-500 mb-2 block text-sm">
+        <label htmlFor="usuario" className="text-slate-500 mb-2 block text-sm Usuario">
           Usuario:
         </label>
         <input
@@ -59,7 +58,7 @@ function LoginPage() {
           <span className="text-red-500 text-xs">{errors.usuario.message as string}</span>
         )}
 
-        <label htmlFor="password" className="text-slate-500 mb-2 block text-sm">
+        <label htmlFor="password" className="text-slate-500 mb-2 block text-sm Contraseña">
           Contraseña:
         </label>
         <input
@@ -80,10 +79,13 @@ function LoginPage() {
           </span>
         )}
         
-        <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
+        <button className="w-full p-3 rounded-lg mt-2 button-Iniciar-Session">
           Iniciar Session
         </button>
-        <button className="w-full bg-blue-500 text-white p-3 rounded-lg mt-2">
+        <button 
+        className="w-full p-3 rounded-lg mt-2 button-register"
+        onClick={() => router.push('/auth/register')}
+        >
           Registrarse
         </button>
       </form>

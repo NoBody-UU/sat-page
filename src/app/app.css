@@ -3,6 +3,92 @@
 @tailwind utilities;
 
 
-body {
-  @apply bg-neutral-950;
+.login-container {
+  font-family: 'Arial', sans-serif;
+  margin: 0; 
+  padding: 0;
+  background-image: url('https://web.icetex.gov.co/documents/20122/460927/inician_pregrado_2022.jpeg/546b37ee-708d-939c-1027-79e3f801ecc2?t=1643746849537');
+  background-size: cover;
+  background-position: center; 
+  height: 100vh; 
+  width: 100%; 
 }
+
+
+
+.button-register,.button-Iniciar-Session {
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  color: #070707; 
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.button-Iniciar-Session {
+  background-color: #28a745;
+}
+
+.button-register:hover {
+background-color: #0056b3; 
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); 
+}
+.button-Iniciar-Session:hover {
+  background-color: #0d7000; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); 
+}
+
+.Usuario {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333; 
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.Contraseña {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333; 
+  padding: 10px;
+  border-radius: 4px;
+
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px; 
+}
+.IniciarSession {
+  display: inline-block;
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  color: #fff; 
+  background-color: #007bff; 
+  border: none;
+  border-radius: 5px; 
+  padding: 10px 20px;
+  text-align: center; 
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+  cursor: pointer; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.IniciarSession:hover {
+  background-color: #0056b3; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); 
+}
+
+
+.register-container {}
+
+
+ 
+  
